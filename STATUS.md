@@ -7,7 +7,7 @@ status: scaffolded
 
 # STATUS — Cloister Bell landing
 
-**Phase:** scaffolded (binary builds; templates render; deploy step is stubbed).
+**Phase:** scaffold-with-content (pre-Antigravity content fill, 2026-05-01).
 
 ## Real
 
@@ -22,7 +22,8 @@ status: scaffolded
 
 - `static/htmx.min.js` is a **stub** — drop the real htmx 2.x minified file before launch:
   `curl -L https://unpkg.com/htmx.org@2.0.4/dist/htmx.min.js > static/htmx.min.js`
-- All copy on `/`, `/thesis`, `/hardware` is sketch — clearly marked with `<!-- PLACEHOLDER -->` HTML comments.
+- Hero, thesis (4 sections) and hardware (4 sections) copy filled with non-claim structure copy 2026-05-01. Bridge names, vocab size and reference device list deliberately deferred to launch — no invention.
+- Footers carry Canzuk Ltd 17074739 across all templates.
 - `/api/signup` echoes; no real subscriber backend wired.
 - Deploy step in `.github/workflows/deploy.yml` is commented — sovereign chooses Fly.io vs Cloud Run, then add the secret and uncomment.
 - Domain unknown (mandate says Matt names later).
