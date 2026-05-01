@@ -1,0 +1,65 @@
+{{define "thesis.html"}}<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{.Title}}</title>
+  <meta name="description" content="{{.Description}}">
+  <link rel="stylesheet" href="/static/site.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="hdr">
+    <div class="wrap row">
+      <a href="/" class="brand"><span class="bell">&#x269A;</span> Cloister Bell</a>
+      <nav aria-label="Primary">
+        <a href="/thesis" aria-current="page">Thesis</a>
+        <a href="/hardware">Hardware</a>
+        <a href="https://github.com/mrjkilcoyne-lgtm/cloister-bell-landing">Source</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main" class="wrap longform">
+    <p class="eyebrow">Thesis</p>
+    <h1>Why this works without training.</h1>
+
+    <h2>1. Signal is not the bottleneck.</h2>
+    <p>
+      <!-- PLACEHOLDER: Matt — the available bandwidth from PPG, IMU, bone-mic and SpO2 is far higher than the entropy of a 12-symbol vocabulary. -->
+      The available bandwidth across the three off-the-shelf sensor classes
+      already exceeds the entropy of a small command vocabulary. The
+      bottleneck is the <em>map</em>, not the data.
+    </p>
+
+    <h2>2. Bridges are isomorphisms, not models.</h2>
+    <p>
+      <!-- PLACEHOLDER: explain the bridge concept properly — formal mappings between physiological event-grammar and symbolic intent. -->
+      A bridge is a formal mapping between a class of physiological events
+      and a class of symbolic intents. Because the mapping is mathematical
+      it transfers across users by construction. There is no model to
+      retrain. There is no enrolment.
+    </p>
+
+    <h2>3. The realiser is the LLM at the end.</h2>
+    <p>
+      <!-- PLACEHOLDER: position the LLM as a *realisation* layer, not the decoder. -->
+      Once intent is decoded into the symbolic grammar, the LLM at the end
+      of the pipe expands it into language, action, or query. The LLM is
+      replaceable. The bridges are not.
+    </p>
+
+    <h2>4. What v1 ships.</h2>
+    <p>
+      <!-- PLACEHOLDER: enumerate the five v1 bridges — Matt to confirm names. -->
+      Five bridges. A reference Android app. A spec other teams can implement
+      against. Source under a permissive licence.
+    </p>
+
+    <p><a class="cta" href="/hardware">The hardware that makes this practical</a></p>
+  </main>
+  <footer class="ftr">
+    <div class="wrap"><p>&copy; {{.Year}} Cloister Bell.</p></div>
+  </footer>
+</body>
+</html>{{end}}

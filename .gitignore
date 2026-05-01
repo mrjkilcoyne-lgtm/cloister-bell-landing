@@ -1,0 +1,10 @@
+/cloister-bell
+/cloister-bell.exe
+/dist/
+*.log
+.env
+.env.local
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

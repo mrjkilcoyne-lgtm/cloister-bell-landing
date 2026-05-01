@@ -1,0 +1,84 @@
+{{define "index.html"}}<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{.Title}}</title>
+  <meta name="description" content="{{.Description}}">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="stylesheet" href="/static/site.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <script src="/static/htmx.min.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="hdr">
+    <div class="wrap row">
+      <a href="/" class="brand"><span class="bell">&#x269A;</span> Cloister Bell</a>
+      <nav aria-label="Primary">
+        <a href="/thesis">Thesis</a>
+        <a href="/hardware">Hardware</a>
+        <a href="https://github.com/mrjkilcoyne-lgtm/cloister-bell-landing">Source</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="hero wrap">
+      <p class="eyebrow">A thought-decoder for the post-EEG era</p>
+      <h1>The bell that rings <em>before</em> you speak.</h1>
+      <p class="lede">
+        Earbuds with bone-conduction microphones. A watch with a PPG sensor.
+        A ring with an accelerometer. Together they pick up enough biosignal
+        to recover a small, useful vocabulary of intent &mdash; <em>without</em>
+        a training run, because the bridge from signal to meaning is a formal
+        grammar, not a learned weight matrix.
+      </p>
+      <p>
+        <a class="cta" href="/thesis">Read the thesis</a>
+        &nbsp; <a href="/hardware">See the hardware</a>
+      </p>
+      <!-- PLACEHOLDER: Matt to refine the one-paragraph pitch. Above is sketch shaped to thesis. -->
+    </section>
+
+    <section class="wrap split">
+      <div>
+        <h2>Not another BCI startup.</h2>
+        <p>
+          Brain-computer interfaces promise word-level decoding from invasive
+          electrodes after months of training. Cloister Bell promises something
+          smaller and harder to fake: a dozen distinguishable intents, decoded
+          in real time, from sensors you already wear, with no enrolment phase.
+        </p>
+        <!-- PLACEHOLDER: tighten with Matt's exact framing. -->
+      </div>
+      <div>
+        <h2>Grammar, not training.</h2>
+        <p>
+          The decoder is built from formal isomorphisms between physiological
+          signal and a small symbolic grammar. It works for any user out of
+          the box because the bridge is mathematical, not statistical. Five
+          bridges ship in v1. The realiser at the end of the pipe is whichever
+          LLM you point it at.
+        </p>
+        <!-- PLACEHOLDER: link to whitepaper / longer technical writeup once it exists. -->
+      </div>
+    </section>
+
+    <section class="wrap signup-section">
+      <h2>One email when there&rsquo;s a demo.</h2>
+      <form hx-post="/api/signup" hx-target="#signup-result" hx-swap="innerHTML" class="signup">
+        <label for="email" class="sr-only">Email</label>
+        <input type="email" name="email" id="email" required placeholder="you@domain.com">
+        <button type="submit" class="cta">Notify me</button>
+      </form>
+      <div id="signup-result" aria-live="polite"></div>
+    </section>
+  </main>
+  <footer class="ftr">
+    <div class="wrap">
+      <p>&copy; {{.Year}} Cloister Bell. Single binary. No tracking. No SPA.</p>
+      <p class="muted">Static templates embedded via Go <code>embed</code>. Built to outlast its frameworks.</p>
+    </div>
+  </footer>
+</body>
+</html>{{end}}

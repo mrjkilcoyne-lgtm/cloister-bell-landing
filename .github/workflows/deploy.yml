@@ -1,0 +1,30 @@
+name: Build and (later) deploy
+
+on:
+  push:
+    branches: [main, Doctor]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+      - name: Build
+        run: |
+          CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o cloister-bell ./
+          ls -lh cloister-bell
+      - name: Image build (Docker, no push yet)
+        run: docker build -t cloister-bell-landing:${{ github.sha }} .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: cloister-bell-binary
+          path: cloister-bell
+
+  # PLACEHOLDER: deploy step. Two ratified options:
+  # (a) Fly.io  — needs FLY_API_TOKEN secret + fly.toml
+  # (b) Cloud Run — needs GCP_SA_KEY secret + project/region
+  # Sovereign to ratify which target. Until then, we just build.

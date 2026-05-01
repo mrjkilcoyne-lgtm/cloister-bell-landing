@@ -1,0 +1,35 @@
+{{define "layout"}}<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{.Title}}</title>
+  <meta name="description" content="{{.Description}}">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta property="og:title" content="{{.Title}}">
+  <meta property="og:description" content="{{.Description}}">
+  <link rel="stylesheet" href="/static/site.css">
+  <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+  <script src="/static/htmx.min.js" defer></script>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to content</a>
+  <header class="hdr">
+    <div class="wrap row">
+      <a href="/" class="brand"><span class="bell">&#x269A;</span> Cloister Bell</a>
+      <nav aria-label="Primary">
+        <a href="/thesis">Thesis</a>
+        <a href="/hardware">Hardware</a>
+        <a href="https://github.com/mrjkilcoyne-lgtm/cloister-bell-landing">Source</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">{{template "content" .}}</main>
+  <footer class="ftr">
+    <div class="wrap">
+      <p>&copy; {{.Year}} Cloister Bell. Single binary. No tracking. No SPA.</p>
+      <p class="muted">Static templates embedded via Go <code>embed</code>. Built to outlast its frameworks.</p>
+    </div>
+  </footer>
+</body>
+</html>{{end}}
